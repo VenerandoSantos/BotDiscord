@@ -67,7 +67,8 @@ async def play_music(ctx, query):
             if not file_to_play.lower().endswith('.mp3'):
                 file_to_play += '.mp3'
             display_title = file_to_play.replace('.mp3', '') # Remove .mp3 para exibição
-            source = discord.FFmpegPCMAudio(file_to_play)
+            file_path = f'./audios/{file_to_play}'  # Adiciona o caminho da pasta
+            source = discord.FFmpegPCMAudio(file_path)
             await ctx.send(f'Tocando local: **{display_title}**')
 
         # Esta função de callback (`after`) roda em um Thread Pool Executor (outro thread).
