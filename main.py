@@ -260,7 +260,8 @@ async def play(ctx, *, query: str): # Usamos *, query para permitir espaços na 
 
     # --- NOVA LÓGICA PARA LIDAR COM PLAYLISTS ---
     # Verifica se a query é uma URL de playlist do YouTube
-    is_playlist = 'youtube.com/playlist?list=' in query
+    # https://www.youtube.com/watch?v=vmuVH5GG-uw&list=PL6YkHd6sT5W5umkK2nWnpYpR-EFFfg0gF
+    is_playlist = '&list=' in query 
 
     if is_playlist:
         await ctx.send('Detectei uma playlist! Processando e adicionando músicas à fila...')
@@ -397,7 +398,6 @@ async def limparfila(ctx):
     await ctx.send("Fila de reprodução limpa.")
 
 # --- Execução do Bot ---
-# Substitua 'SEU_TOKEN_AQUI' pelo token real do seu bot
 with open("key.txt", "r") as arquivo:
     minha_key = arquivo.read().strip()
 
